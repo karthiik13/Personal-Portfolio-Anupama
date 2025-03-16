@@ -1,12 +1,34 @@
-# React + Vite
+# 🖥️ Data Analyst Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A professional and modern portfolio website built with **React** to showcase skills, projects, and experience as a data analyst.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+👉 [Live Site](https://anupamasudarsan.com)  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 📸 Screenshots
+| Home Page | Projects Section | Skills Section |
+|-----------|------------------|----------------|
+| ![Home](./screenshots/home.png) | ![Projects](./screenshots/projects.png) | ![Skills](./screenshots/skills.png) |
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🎯 Features
+✅ Professional and minimalistic design  
+✅ Smooth scrolling and scroll-based animations  
+✅ Sticky navbar with dynamic background transition  
+✅ Popup for detailed project view  
+✅ Responsive across all devices  
+
+---
+
+## 🛠️ Built With
+- **React** – Frontend framework  
+- **Tailwind CSS** – Styling  
+- **React Router** – Page routing  
+- **Framer Motion** – Animations  
+- **Vercel** – Deployment  
+
+---
+
