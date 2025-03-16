@@ -18,7 +18,7 @@ const certifications: Certification[] = [
     title: 'Microsoft Certified: Power BI Data Analyst Associate',
     organization: 'Microsoft',
     issueDate: 'March 2025',
-    imageUrl: '/Microsoft Power BI Data Analyst Associate.png',
+    imageUrl: 'images/certifications/MicrosoftPowerBI.png', // Updated path
     credentialUrl: 'https://learn.microsoft.com/api/credentials/share/en-us/AnupamaSudarsan-8660/3797B5E6EDD2565B?sharingId=4AE8EE1E67AEA97F',
     skills: ['DAX', 'Power Query', 'Data Modeling', 'Data Visualization', 'Data Security'],
   },
@@ -27,7 +27,7 @@ const certifications: Certification[] = [
     title: 'IBM Data Science Professional Certification',
     organization: 'IBM on Coursera',
     issueDate: 'July 2020',
-    imageUrl: '/IBMDataScienceCertificate.png',
+    imageUrl: 'images/certifications/IBMDataScienceCertificate.png', // Updated path
     credentialUrl: 'https://coursera.org/share/fc7bf25437209c13ceedaa6b31fce4c1',
     skills: ['Data Science', 'Python', 'Machine Learning', 'Databases', 'SQL'],
   },
@@ -36,7 +36,7 @@ const certifications: Certification[] = [
     title: 'Supply Chain Analytics by MIT on edX',
     organization: 'MIT on edX',
     issueDate: 'March 2020',
-    imageUrl: '/edxSupplyChainAnalytics.png',
+    imageUrl: 'images/certifications/edxSupplyChainAnalytics.png', // Updated path
     credentialUrl: 'https://courses.edx.org/certificates/c2a75dcf02de4e5b96cec9e07ee146bc',
     skills: ['Statistical Analysis', 'Optimization', 'Forecasting'],
   },

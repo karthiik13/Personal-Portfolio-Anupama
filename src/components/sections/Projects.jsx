@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import projects from '../data/ProjectData';
+import projects from '../../data/ProjectData';
 import ProjectDetail from './ProjectDetail';
 
 const Projects = () => {
@@ -42,9 +42,7 @@ const Projects = () => {
                 className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               />
               <div className="relative z-10">
-                <h3 className="text-2xl font-semibold mb-2">
-                  {project.title}
-                </h3>
+                <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
                 <p className="text-gray-300 mb-4">{project.description}</p>
                 <div className="flex gap-2 mb-4">
                   {project.tools.map((tool) => (

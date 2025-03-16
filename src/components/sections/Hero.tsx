@@ -46,7 +46,7 @@ const Hero = () => {
               style={{ padding: '4px' }}
             >
               <img
-                src="/profile.jpeg"
+                src="/images/profile.jpeg"
                 alt="Anupama Sudarsan"
                 className="rounded-full w-full h-full object-cover bg-gray-900 shadow-2xl 
                              ring-4 ring-blue-500/50 hover:ring-blue-400/80 

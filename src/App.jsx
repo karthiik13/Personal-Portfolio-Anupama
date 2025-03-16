@@ -1,14 +1,14 @@
 import { Suspense } from 'react';
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import AboutMe from './components/AboutMe';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Contact from "./components/Contact";
-import Footer from './components/Footer';
-import Certifications from "./components/Certifications";
-import LoadingSpinner from './components/LoadingSpinner';
-import PageTransition from './components/PageTransition';
+import Navbar from "./components/common/Navbar";
+import Hero from "./components/sections/Hero";
+import AboutMe from './components/sections/AboutMe';
+import Projects from './components/sections/Projects';
+import Skills from './components/sections/Skills';
+import Contact from "./components/sections/Contact";
+import Footer from './components/common/Footer';
+import Certifications from "./components/sections/Certifications";
+import LoadingSpinner from './components/common/LoadingSpinner';
+import PageTransition from './components/common/PageTransition';
 
 function App() {
   return (

@@ -51,15 +51,6 @@ const AboutMe = () => {
             Feel free to explore, and if something resonates with you, let’s connect!
           </motion.p>
 
-          {/* Call to Action */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="rounded-full bg-gray-100 px-8 py-3 text-lg font-semibold text-gray-900 transition-all hover:bg-gray-300 relative overflow-hidden group"
-          >
-            <span className="relative z-10">See My Work</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-20 transition-opacity" />
-          </motion.button>
         </div>
       </div>
     </div>
