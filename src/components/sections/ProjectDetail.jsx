@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { X, ArrowLeft, ArrowRight } from 'lucide-react';
+import { X, ArrowLeft, ArrowRight, Github } from 'lucide-react'; // Added Github icon
 
 const ProjectDetail = ({ project, onClose, projects, onSelectProject }) => {
   const [activeSection, setActiveSection] = useState(project.details?.[0]?.section || null);
@@ -91,13 +91,26 @@ const ProjectDetail = ({ project, onClose, projects, onSelectProject }) => {
         {/* Header */}
         <div className="flex justify-between items-center p-6 border-b border-gray-700">
           <h2 className="text-2xl font-bold text-gray-100">{project.title}</h2>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-white transition-colors"
-            aria-label="Close"
-          >
-            <X size={24} />
-          </button>
+          <div className="flex items-center space-x-4">
+            {project.githubLink && (
+              <a
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-gray-900 hover:bg-gray-800 text-white text-sm px-4 py-2 rounded-lg transition-transform hover:scale-105"
+              >
+                <Github size={16} className="mr-2" />
+                GitHub
+              </a>
+            )}
+            <button
+              onClick={onClose}
+              className="text-gray-400 hover:text-white transition-colors"
+              aria-label="Close"
+            >
+              <X size={24} />
+            </button>
+          </div>
         </div>
 
         {/* Main content */}
@@ -111,7 +124,7 @@ const ProjectDetail = ({ project, onClose, projects, onSelectProject }) => {
           {/* Embedded PDF Viewer */}
           {project.pdfLink && !pdfError ? (
             <div className="mt-8">
-              <h3 className="text-xl font-semibold mb-4">Project PDF</h3>
+              <h3 className="text-xl font-semibold mb-4">Project Details</h3>
               <iframe
                 src={project.pdfLink}
                 title="Project PDF"
@@ -132,19 +145,6 @@ const ProjectDetail = ({ project, onClose, projects, onSelectProject }) => {
                 className="inline-block bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded-lg transition-transform hover:scale-105"
               >
                 Download PDF
-              </a>
-            </div>
-          )}
-          {/* Learn More Button */}
-          {project.githubLink && (
-            <div className="mt-6">
-              <a
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded-lg transition-transform hover:scale-105"
-              >
-                Learn More
               </a>
             </div>
           )}

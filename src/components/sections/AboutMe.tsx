@@ -48,7 +48,7 @@ const AboutMe = () => {
             className="text-lg text-gray-100 leading-relaxed mb-6"
           >
             This portfolio is more than just a collection of projects—it’s a reflection of my journey, growth, and the joy of discovery. 
-            Feel free to explore, and if something resonates with you, let’s connect!
+            Feel free to explore, and if something resonates with you, <a href="#contact" className="text-blue-400">let’s connect</a>!
           </motion.p>
 
         </div>

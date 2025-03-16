@@ -2,7 +2,7 @@ const projects = [
   {
     id: 1,
     title: "A Crime in Vancouver - A Cluster Analysis",
-    description: "An analytical exploration of crime patterns in Vancouver using clustering techniques to identify high-risk neighborhoods.",
+    description: "An analytical exploration of crime patterns in Vancouver using clustering techniques to identify high-risk neighbourhoods.",
     tools: ["Python", "SQL"],
     pdfLink: "https://drive.google.com/file/d/1RROeFFvnfScolI7DFKFK9gzv7VUx-pOY/preview", // Updated path
     githubLink: "https://github.com/AnupamaSudarsan/Coursera_Capstone.git",
