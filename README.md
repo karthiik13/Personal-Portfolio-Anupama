@@ -3,7 +3,7 @@
 A professional and modern portfolio website built with **React** to showcase skills, projects, and experience as a data analyst.
 
 ## 🚀 Live Demo
-👉 [Live Site](https://anupamasudarsan.com)  
+👉 [Live Site]([https://anupamasudarsan.com](https://personal-portfolio-anupama.vercel.app/))  
 
 ---
 
