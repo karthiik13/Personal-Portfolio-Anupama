@@ -7,10 +7,44 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [status, setStatus] = useState({
+    submitted: false,
+    submitting: false,
+    info: { error: false, msg: null as string | null }
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setStatus({ submitted: false, submitting: true, info: { error: false, msg: null } });
+    
+    try {
+      // Replace 'your-formspree-endpoint' with your actual Formspree form ID
+      const response = await fetch("https://formspree.io/f/your-formspree-endpoint", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setStatus({
+          submitted: true,
+          submitting: false,
+          info: { error: false, msg: "Message sent successfully!" }
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        const data = await response.json();
+        throw new Error(data.error);
+      }
+    } catch (error) {
+      setStatus({
+        submitted: false,
+        submitting: false,
+        info: { error: true, msg: "An error occurred. Please try again later." }
+      });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -35,7 +69,7 @@ const Contact = () => {
         <div className="max-w-3xl mx-auto">
           <div className="flex justify-center space-x-8 mb-12">
             <a 
-              href="https://github.com/yourusername" 
+              href="https://github.com/AnupamaSudarsan" 
               className="text-3xl text-gray-600 hover:text-blue-500 transform hover:scale-110 transition-all duration-300 dark:text-gray-400 dark:hover:text-blue-400"
               target="_blank"
               rel="noopener noreferrer"
@@ -43,7 +77,7 @@ const Contact = () => {
               <FaGithub />
             </a>
             <a 
-              href="https://linkedin.com/in/yourusername" 
+              href="https://www.linkedin.com/in/anupama-sudarsan/" 
               className="text-3xl text-gray-600 hover:text-blue-500 transform hover:scale-110 transition-all duration-300 dark:text-gray-400 dark:hover:text-blue-400"
               target="_blank"
               rel="noopener noreferrer"
@@ -51,7 +85,7 @@ const Contact = () => {
               <FaLinkedin />
             </a>
             <a 
-              href="mailto:your.email@example.com" 
+              href="mailto:anupamasudarsan.13@gmail.com" 
               className="text-3xl text-gray-600 hover:text-blue-500 transform hover:scale-110 transition-all duration-300 dark:text-gray-400 dark:hover:text-blue-400"
             >
               <FaEnvelope />
@@ -59,6 +93,12 @@ const Contact = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8 bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+            {status.info.msg && (
+              <div className={`text-center p-4 rounded-lg ${status.info.error ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-100' : 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-100'}`}>
+                {status.info.msg}
+              </div>
+            )}
+            
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Name
@@ -71,6 +111,7 @@ const Contact = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors duration-300"
                 required
+                disabled={status.submitting}
               />
             </div>
 
@@ -86,6 +127,7 @@ const Contact = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors duration-300"
                 required
+                disabled={status.submitting}
               />
             </div>
 
@@ -101,14 +143,16 @@ const Contact = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors duration-300"
                 required
+                disabled={status.submitting}
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-medium hover:bg-blue-700 transform hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+              disabled={status.submitting}
+              className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-medium hover:bg-blue-700 transform hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-50"
             >
-              Send Message
+              {status.submitting ? 'Sending...' : status.submitted ? 'Sent!' : 'Send Message'}
             </button>
           </form>
         </div>
