@@ -5,23 +5,16 @@ import ProjectDetail from './ProjectDetail';
 const projects = [
   {
     id: 1,
-    title: "Sales Dashboard",
-    description: "Interactive Power BI dashboard for sales performance analysis.",
-    tools: ["Power BI", "Excel"],
-    link: "#"
+    title: "A Crime in Vancouver - A Cluster Analysis",
+    description: "An anlytical exploration of crime patters in Vancouver using clustering techniques to identify high-risk neighborhoods.",
+    tools: [ "Python", "SQL"],
+    link: "#",
   },
   {
     id: 2,
-    title: "Customer Segmentation",
-    description: "Used clustering techniques to segment customers and analyze trends.",
-    tools: ["Python", "Power BI"],
-    link: "#"
-  },
-  {
-    id: 3,
-    title: "Financial Reporting",
-    description: "Automated financial reporting using Power BI and DAX.",
-    tools: ["Power BI", "DAX"],
+    title: "PwC Switzerland Power BI Job Simulation on Forage",
+    description: "A job simulation creating insightful dashboards, analyzing HR data and communicating data-driven recommendations",
+    tools: ["Power BI"],
     link: "#"
   }
 ];

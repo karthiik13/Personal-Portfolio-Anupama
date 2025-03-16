@@ -1,79 +1,161 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { X, ArrowLeft, ArrowRight } from 'lucide-react';
 
 const ProjectDetail = ({ project, onClose, projects, onSelectProject }) => {
+  const [activeSection, setActiveSection] = useState('introduction');
+  
+  // Example project details structure - you'll need to add this data to your projects array
+  const projectSections = {
+    introduction: {
+      title: 'Introduction',
+      content: project.description,
+    },
+    methodology: {
+      title: 'Methodology',
+      content: 'Detailed explanation of the methods used in this project...',
+      images: [
+        { src: '/api/placeholder/800/500', alt: 'Methodology diagram', caption: 'Fig 1: Project methodology overview' }
+      ]
+    },
+    results: {
+      title: 'Results',
+      content: 'The key findings from this analysis include...',
+      images: [
+        { src: '/api/placeholder/800/500', alt: 'Results chart', caption: 'Fig 2: Key metrics visualization' },
+        { src: '/api/placeholder/800/500', alt: 'Results data', caption: 'Fig 3: Detailed outcomes' }
+      ]
+    },
+    conclusion: {
+      title: 'Conclusion',
+      content: 'In conclusion, this project demonstrated...'
+    }
+  };
+
+  // Find current project index to enable navigation
+  const currentIndex = projects.findIndex(p => p.id === project.id);
+  const nextProject = projects[(currentIndex + 1) % projects.length];
+  const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/90 flex justify-center items-center z-50"
+      className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 md:p-8"
+      onClick={onClose}
     >
       <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        className="bg-gray-900/90 backdrop-blur-lg p-8 rounded-lg shadow-lg w-full h-full overflow-auto"
+        className="bg-gray-800 rounded-lg shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
       >
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="text-gray-300 mb-4 hover:text-purple-400 transition-colors duration-300"
-          onClick={onClose}
-        >
-          Close
-        </motion.button>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-2xl font-semibold text-gray-100 mb-4">{project.title}</h3>
-              <p className="text-gray-300 leading-relaxed">{project.description}</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-medium text-gray-100 mb-3">Tech Stack</h4>
+        {/* Header */}
+        <div className="flex justify-between items-center p-6 border-b border-gray-700">
+          <h2 className="text-2xl font-bold text-gray-100">{project.title}</h2>
+          <button
+            onClick={onClose}
+            className="text-gray-400 hover:text-white transition-colors"
+            aria-label="Close"
+          >
+            <X size={24} />
+          </button>
+        </div>
+
+        <div className="flex flex-col md:flex-row h-[calc(90vh-80px)]">
+          {/* Sidebar */}
+          <div className="w-full md:w-64 bg-gray-900 p-4 overflow-y-auto">
+            <nav>
+              <ul>
+                {Object.entries(projectSections).map(([key, section]) => (
+                  <li key={key} className="mb-2">
+                    <button
+                      className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
+                        activeSection === key
+                          ? 'bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white'
+                          : 'text-gray-300 hover:bg-gray-800'
+                      }`}
+                      onClick={() => setActiveSection(key)}
+                    >
+                      {section.title}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <div className="mt-8 pt-4 border-t border-gray-700">
+              <div className="text-sm text-gray-400 mb-2">Project Tools:</div>
               <div className="flex flex-wrap gap-2">
                 {project.tools.map((tool) => (
-                  <span key={tool} className="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">
+                  <span
+                    key={tool}
+                    className="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded"
+                  >
                     {tool}
                   </span>
                 ))}
               </div>
             </div>
+          </div>
 
-            <div className="flex gap-4">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300"
-              >
-                GitHub <span>→</span>
-              </a>
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300"
-              >
-                Live Demo <span>→</span>
-              </a>
+          {/* Main content */}
+          <div className="flex-1 p-6 overflow-y-auto">
+            <div className="prose prose-invert max-w-none">
+              <h3 className="text-xl font-semibold mb-4">
+                {projectSections[activeSection].title}
+              </h3>
+              <p className="mb-6">{projectSections[activeSection].content}</p>
+              
+              {/* Images section */}
+              {projectSections[activeSection].images && (
+                <div className="mt-8 space-y-6">
+                  {projectSections[activeSection].images.map((image, index) => (
+                    <figure key={index} className="text-center">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="mx-auto rounded-lg shadow-lg max-w-full"
+                      />
+                      <figcaption className="mt-2 text-sm text-gray-400">
+                        {image.caption}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
+        </div>
 
-          <div className="space-y-4">
-            {project.images?.map((image, index) => (
-              <motion.img
-                key={index}
-                src={image}
-                alt={`${project.title} screenshot ${index + 1}`}
-                className="rounded-lg shadow-lg w-full"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-              />
-            ))}
-          </div>
+        {/* Footer with navigation */}
+        <div className="flex justify-between items-center p-4 border-t border-gray-700 bg-gray-900">
+          <button
+            onClick={() => onSelectProject(prevProject)}
+            className="flex items-center text-gray-300 hover:text-white transition-colors"
+          >
+            <ArrowLeft size={16} className="mr-2" />
+            Previous Project
+          </button>
+          <button
+            onClick={() => onSelectProject(nextProject)}
+            className="flex items-center text-gray-300 hover:text-white transition-colors"
+          >
+            Next Project
+            <ArrowRight size={16} className="ml-2" />
+          </button>
         </div>
       </motion.div>
     </motion.div>

@@ -23,21 +23,22 @@ const Skills = () => {
     {
       title: 'Data Analysis',
       skills: [
-        { name: 'Power BI', icon: <FaChartPie />, proficiency: 90 },
-        { name: 'Excel', icon: <FaTable />, proficiency: 85 },
+        { name: 'Power BI', icon: <FaChartPie />, proficiency: 100 },
+        { name: 'Excel', icon: <FaTable />, proficiency: 80 },
+        { name: 'Tableau', icon: <FaChartBar />, proficiency: 60 }
       ]
     },
     {
       title: 'Programming',
       skills: [
-        { name: 'Python', icon: <FaPython />, proficiency: 80 },
-        { name: 'R', icon: <SiR />, proficiency: 75 },
+        { name: 'Python', icon: <FaPython />, proficiency: 60 },
+        { name: 'R', icon: <SiR />, proficiency: 55 },
       ]
     },
     {
       title: 'Database',
       skills: [
-        { name: 'SQL', icon: <FaDatabase />, proficiency: 85 },
+        { name: 'SQL', icon: <FaDatabase />, proficiency: 70 },
       ]
     }
   ];

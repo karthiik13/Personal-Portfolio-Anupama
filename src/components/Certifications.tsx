@@ -7,7 +7,6 @@ interface Certification {
   organization: string;
   issueDate: string;
   expiryDate?: string;
-  credentialId: string;
   imageUrl: string;
   credentialUrl: string;
   skills: string[];
@@ -15,14 +14,31 @@ interface Certification {
 
 const certifications: Certification[] = [
   {
-    id: 'aws-sa',
-    title: 'AWS Solutions Architect Associate',
-    organization: 'Amazon Web Services',
-    issueDate: 'Dec 2023',
-    credentialId: 'AWS-SAA-00001',
-    imageUrl: '/images/certifications/aws-sa.png',
-    credentialUrl: 'https://www.credly.com/your-badge',
-    skills: ['AWS', 'Cloud Architecture', 'Infrastructure']
+    id: 'microsoft-power-bi',
+    title: 'Microsoft Certified: Power BI Data Analyst Associate',
+    organization: 'Microsoft',
+    issueDate: 'March 2025',
+    imageUrl: '/Microsoft Power BI Data Analyst Associate.png',
+    credentialUrl: 'https://learn.microsoft.com/api/credentials/share/en-us/AnupamaSudarsan-8660/3797B5E6EDD2565B?sharingId=4AE8EE1E67AEA97F',
+    skills: ['DAX', 'Power Query', 'Data Modeling', 'Data Visualization', 'Data Security'],
+  },
+  {
+    id: 'ibm-data-science',
+    title: 'IBM Data Science Professional Certification',
+    organization: 'IBM on Coursera',
+    issueDate: 'July 2020',
+    imageUrl: '/IBMDataScienceCertificate.png',
+    credentialUrl: 'https://coursera.org/share/fc7bf25437209c13ceedaa6b31fce4c1',
+    skills: ['Data Science', 'Python', 'Machine Learning', 'Databases', 'SQL'],
+  },
+  {
+    id: 'edx-supply-chain',
+    title: 'Supply Chain Analytics by MIT on edX',
+    organization: 'MIT on edX',
+    issueDate: 'March 2020',
+    imageUrl: '/edxSupplyChainAnalytics.png',
+    credentialUrl: 'https://courses.edx.org/certificates/c2a75dcf02de4e5b96cec9e07ee146bc',
+    skills: ['Statistical Analysis', 'Optimization', 'Forecasting'],
   },
   // Add more certifications here
 ];
@@ -65,9 +81,6 @@ const CertificationCard = ({ cert }: { cert: Certification }) => (
       </div>
 
       <div className="flex justify-between items-center pt-4 border-t border-gray-200 dark:border-gray-700">
-        <span className="text-sm text-gray-500 dark:text-gray-400">
-          ID: {cert.credentialId}
-        </span>
         <a
           href={cert.credentialUrl}
           target="_blank"

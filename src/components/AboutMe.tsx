@@ -26,9 +26,9 @@ const AboutMe = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg text-gray-100 leading-relaxed mb-6"
           >
-            I'm a passionate <span className="text-blue-400">Data Analyst</span> with a strong background in 
-            Power BI, SQL, and data visualization. I love transforming complex data into meaningful insights 
-            that help businesses make better decisions.
+           Welcome to my little corner of the digital world! 
+           I’m Anupama—a curious explorer of data, always looking for the patterns, stories, and insights hidden beneath the surface. 
+           Numbers may seem cold at first, but I believe they tell a story, and I love bringing those stories to life.
           </motion.p>
 
           <motion.p
@@ -37,9 +37,8 @@ const AboutMe = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg text-gray-100 leading-relaxed mb-6"
           >
-            With experience in creating interactive dashboards and conducting in-depth analysis, I've helped 
-            businesses uncover hidden patterns and improve operational efficiency. My focus is on delivering 
-            clean, insightful, and actionable data solutions.
+            With a background in Business Analytics, Operations, and Data Science, I enjoy working across different areas—visualization, reporting, process optimization, and strategy. 
+            My approach isn’t just about crunching numbers; it’s about understanding the why behind them and finding creative ways to make data more meaningful.
           </motion.p>
 
           <motion.p
@@ -48,8 +47,8 @@ const AboutMe = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg text-gray-100 leading-relaxed mb-6"
           >
-            Currently, I'm expanding my expertise in Python and predictive analytics to tackle more complex 
-            data challenges and stay ahead in the industry.
+            This portfolio is more than just a collection of projects—it’s a reflection of my journey, growth, and the joy of discovery. 
+            Feel free to explore, and if something resonates with you, let’s connect!
           </motion.p>
 
           {/* Call to Action */}
